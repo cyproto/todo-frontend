@@ -1,0 +1,87 @@
+.signup-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    .content {
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        .app-name {
+            margin-top: 0px;
+            padding-bottom: 10px;
+            font-size: 32px;
+        }
+        .signup-form {
+            padding: 40px;
+            background: #fff;
+            width: 900px;
+            box-shadow: 0 0 10px #ddd;
+            input:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px white inset;
+            }
+            border-radius: 20px;
+        }
+    }
+    
+
+    &:after {
+        content: '';
+        background: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 50%;
+        right: 0;
+    }
+    &:before {
+        content: '';
+        background: #e4f9f5;
+        position: absolute;
+        border-radius: 50px 50px 0px 0px;
+        top: 50%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+.text-center {
+    text-align: center;
+}
+.w-100 {
+    width: 100%;
+}
+.image-upload-progress-bar {
+    margin-top: 15px;
+    display: flex;
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.signup-button {
+    color: white;
+    background-color: #30e3ca;
+    border-radius: 30px;
+}
+
+.user-avatar-div{
+    margin-left: 5%;
+}
+
+.user-avatar{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: top center;
+    border-radius: 50%;
+}
+
+.signup-heading {
+    color: #fff;
+    background-color: #40514e;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+}
