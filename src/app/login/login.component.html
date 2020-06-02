@@ -1,0 +1,56 @@
+<div class="login-page">
+    <div class="content">
+        <form class="login-form" fxFlex [formGroup]="loginForm" >
+            <div class="text-center">
+                <h2 class="app-name"><span class="login-heading">Login</span></h2>
+            </div>
+            <div fxLayout="row">
+                <div fxFlex="50%">
+                    <img style="height: 100%; width: 100%;" src="../../assets/images/login.png">
+                </div>
+                <div fxFlex="50%" class="login-form-div">
+                    <div fxLayout="row" class="each-row" style="margin-top: 5%;">
+                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <mat-form-field style="width: 100%;" appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="alice@mail.com" [formControl]="loginForm.controls['email']" [(ngModel)]="autoFillEmail">
+                                <mat-error *ngIf="submitted && f.email.hasError('required')">
+                                    Email is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="submitted && f.email.hasError('pattern')">
+                                    Email is <strong>invalid</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row" class="each-row">
+                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            <mat-form-field style="width: 100%;" appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" placeholder="******" [formControl]="loginForm.controls['password']">
+                                <mat-error *ngIf="submitted && f.password.hasError('required')">
+                                    Password is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <div *ngIf="submitted && apiRequestErrorMessage != ''">
+                                <strong style="color: red; font-size: small;">{{ apiRequestErrorMessage }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="each-row">
+                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" style="text-align: center;">
+                            <button mat-raised-button class="login-button"
+                                (click)="onLogin()"><span style="font-weight: bold;">Login</span></button>
+                        </div>
+                    </div>
+                    <div fxFlex style="text-align: center; margin-top: 30px;" fxLayout="row" fxLayout.lt-md="column"
+                        class="each-row">
+                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                            New here? <a [routerLinkActive]="'active'" [routerLink]="['/signup']">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
