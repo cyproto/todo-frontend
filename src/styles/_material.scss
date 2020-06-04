@@ -1,6 +1,19 @@
 @font-face {
     font-family: 'Montserrat';
     src: url('../assets/Montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/Montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/Montserrat/Montserrat-Black.ttf') format('truetype');
+    font-weight: 900;
 }
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
