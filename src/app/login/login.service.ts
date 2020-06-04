@@ -9,9 +9,7 @@ export class LoginService {
 
   constructor( private http: HttpClient ) { }
 
-  loginUser( user ){
-    console.log( user );
-    console.log( environment['apiUrl'] + 'login' );
+  loginUser( user ) {
     return this.http.post( environment['apiUrl'] + 'login', user, { withCredentials: true } ).pipe();
   }
 

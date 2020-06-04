@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
       if( false == response['success'] ) {
         this.apiRequestErrorMessage = response['response'];
       } else {
+        sessionStorage.setItem( 'isLoggedIn', JSON.stringify( 'true' ) );
         this.router.navigate( ['/todo-app'] );
       }
     }, error => {
@@ -53,31 +54,6 @@ export class LoginComponent implements OnInit {
       console.log( this.apiRequestErrorMessage );
       return;
     } );
-    // const userRef = this.usersCollection.doc(this.loginForm.value.email);
-    // userRef.get().toPromise().then((docSnapshot) => {
-    //   if ( !docSnapshot.exists ) {
-    //       this.userExistsFlag = false;
-    //       return;
-    //   } else {
-    //     this.userExistsFlag = true;
-    //     this.usersCollection.doc(this.loginForm.value.email).valueChanges().subscribe( result => {
-    //         if( true ) {
-    //           console.log('login');
-    //           this.wrongPasswordFlag = false;
-    //           sessionStorage.setItem('isLoggedIn',JSON.stringify('true'));
-    //           sessionStorage.setItem('userEmail',this.loginForm.value.email);
-    //           sessionStorage.setItem('isExamSubmittedFlag',result.isExamSubmittedFlag);
-    //           sessionStorage.setItem('isGivingTestFirstTimeFlag',result.isGivingTestFirstTimeFlag);
-    //           this.router.navigate(['/exam-app']);
-    //           this.loginForm.reset();
-    //         } else {
-    //           console.log('wrong pass');
-    //           this.wrongPasswordFlag = true;
-    //           sessionStorage.setItem('isLoggedIn',JSON.stringify('false'));
-    //         }
-    //       });
-    //   }
-    // });
   }
 
 }
