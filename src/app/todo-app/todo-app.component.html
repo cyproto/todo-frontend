@@ -1,1 +1,203 @@
-<p>todo-app works!</p>
+<div class="todo-app">
+    <div fxLayout="row wrap" style="display: flex; margin-bottom: 20px;">
+        <div style="margin-left: auto;">
+            <button mat-raised-button class="logout-button" (click)="logoutCurrentUser()">
+                <mat-icon style="margin-right: 5px;">power_settings_new</mat-icon> Logout
+            </button>
+        </div>
+    </div>
+    <div fxLayout="row wrap" style="display: flex;">
+        <div style="margin-left: auto;"><span class="date-span">{{ currentDateTime | date: 'medium' }}</span></div>
+    </div>
+    <div fxLayout="row wrap" style="display: flex;">
+        <div style="margin-left: auto;"><span class="welcome-span">Welcome, {{ currentUserName }}</span></div>
+    </div>
+    <div class="todo-app-main-div">
+        <div fxLayout="row wrap" class="search-div">
+            <mat-form-field color="primary" class="search-bar" appearance="outline">
+                <mat-label style="font-size: larger;">Search</mat-label>
+                <input matInput #searchBar type="search" name="search" autocomplete="off"
+                    (input)="onSearchChange($event.target.value)"
+                    placeholder="Search by Title, Priority (Low, Normal, High ), Label or Status.">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row wrap" class="add-task-div">
+            <div matRipple (click)="addTask()" class="add-button mat-elevation-z3">
+                <span class="add-task-span">
+                    <div class="add-icon">
+                        <mat-icon [inline]="true" style="margin-top: 2px; margin-right: 5px;">add
+                        </mat-icon> Add task
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div *ngIf="currentUserUncompletedTasks.length == 0 && isDataPulled == false" class="mat-spinner">
+            <mat-spinner [diameter]="50"></mat-spinner>
+        </div>
+        <div *ngIf="currentUserUncompletedTasks.length == 0 && isDataPulled == true">
+            <div fxLayout="row" class="tasks-not-found-div">
+                <div fxFlex="30">
+                    <img style="height: 100%; width: 100%;" src="../../assets/images/no-tasks.png">
+                </div>
+            </div>
+            <div fxLayout="row" class="tasks-not-found-div">
+                <div fxFlex="100">
+                    <span class="tasks-not-found-span">All wrapped up! No tasks found.</span>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="all-tasks-div" *ngIf="searchBar.value.length == 0">
+            <div matRipple class="task-div mat-elevation-z3" *ngFor="let task of currentUserUncompletedTasks"
+                (click)="editTask( task )">
+                <div fxLayout="row wrap" style="margin-bottom: 20px;">
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'high-priority-span': task.priority === 'High', 'normal-priority-span': task.priority === 'Normal', 'low-priority-span': task.priority === 'Low' }">
+                        </span>
+                        <span class="task-title">{{ task.title }}</span>
+                    </div>
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'new-status-span': task.status === 'New', 'inprogress-status-span':task.status === 'In-Progress', 'completed-status-span':task.status === 'Completed' }">
+                            {{ task.status }}
+                        </span>
+                        <span class="task-label-span">
+                            {{ task.label }}
+                            <mat-icon *ngIf="task.label == 'Personal'">
+                                person
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Work'">
+                                work
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Shopping'">
+                                shopping_cart
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Others'">
+                                list_alt
+                            </mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <div fxLayout="row wrap">
+                    <div fxFlex="45">
+                        <span style="margin-left: 30px">{{ task.description }}</span>
+                    </div>
+                    <div fxFlex="40">
+                        <span style="font-weight: 700;">Due </span>
+                        {{ task.estimatedCompletionDate | date }}
+                    </div>
+                    <div fxFlex="15">
+                        <button mat-raised-button class="task-done-button"
+                            (click)="markTaskCompleted( task._id, $event )">
+                            <mat-icon style="margin-right: 5px;">done_outline</mat-icon> Done
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="completed-tasks-div"
+            *ngIf="currentUserCompletedTasks.length != 0 && searchBar.value.length == 0">
+            <div fxFlex="100" style="margin: 10px; margin-top: 30px;">
+                <span class="completed-task-title-span">Completed tasks</span>
+            </div>
+            <div matRipple class="task-div mat-elevation-z3" *ngFor="let task of currentUserCompletedTasks"
+                (click)="editTask( task )">
+                <div fxLayout="row wrap" style="margin-bottom: 20px; vertical-align: middle;">
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'high-priority-span': task.priority === 'High', 'normal-priority-span': task.priority === 'Normal', 'low-priority-span': task.priority === 'Low' }">
+                        </span>
+                        <span class="task-title">{{ task.title }}</span>
+                    </div>
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'new-status-span': task.status === 'New', 'inprogress-status-span':task.status === 'In-Progress', 'completed-status-span':task.status === 'Completed' }">
+                            {{ task.status }}
+                        </span>
+                        <span class="task-label-span">
+                            {{ task.label }}
+                            <mat-icon *ngIf="task.label == 'Personal'">
+                                person
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Work'">
+                                work
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Shopping'">
+                                shopping_cart
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Others'">
+                                list_alt
+                            </mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <div fxLayout="row wrap">
+                    <div fxFlex="45">
+                        <span style="margin-left: 30px">{{ task.description }}</span>
+                    </div>
+                    <div fxFlex="40">
+                        <span style="font-weight: 700;">Due </span>
+                        {{ task.estimatedCompletionDate | date }}
+                    </div>
+                    <div fxFlex="15">
+                        <button mat-raised-button class="task-delete-button" (click)="deleteTask( task._id, $event )">
+                            <mat-icon style="margin-right: 5px;">delete</mat-icon> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="filtered-tasks-div" *ngIf="searchBar.value.length != 0">
+            <div fxFlex="100" style="margin: 10px; margin-top: 30px;">
+                <span class="filtered-task-title-span">Completed tasks</span>
+            </div>
+            <div matRipple class="task-div mat-elevation-z3" *ngFor="let task of currentUserFilteredTasks"
+                (click)="editTask( task )">
+                <div fxLayout="row wrap" style="margin-bottom: 20px; vertical-align: middle;">
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'high-priority-span': task.priority === 'High', 'normal-priority-span': task.priority === 'Normal', 'low-priority-span': task.priority === 'Low' }">
+                        </span>
+                        <span class="task-title">{{ task.title }}</span>
+                    </div>
+                    <div fxFlex="45">
+                        <span
+                            [ngClass]="{'new-status-span': task.status === 'New', 'inprogress-status-span':task.status === 'In-Progress', 'completed-status-span':task.status === 'Completed' }">
+                            {{ task.status }}
+                        </span>
+                        <span class="task-label-span">
+                            {{ task.label }}
+                            <mat-icon *ngIf="task.label == 'Personal'">
+                                person
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Work'">
+                                work
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Shopping'">
+                                shopping_cart
+                            </mat-icon>
+                            <mat-icon *ngIf="task.label == 'Others'">
+                                list_alt
+                            </mat-icon>
+                        </span>
+                    </div>
+                </div>
+                <div fxLayout="row wrap">
+                    <div fxFlex="45">
+                        <span style="margin-left: 30px">{{ task.description }}</span>
+                    </div>
+                    <div fxFlex="40">
+                        <span style="font-weight: 700;">Due </span>
+                        {{ task.estimatedCompletionDate | date }}
+                    </div>
+                    <div fxFlex="15">
+                        <button mat-raised-button class="task-delete-button" (click)="deleteTask( task._id, $event )">
+                            <mat-icon style="margin-right: 5px;">delete</mat-icon> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
