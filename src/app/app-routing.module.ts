@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'todo-app',
     loadChildren: './todo-app/todo-app.module#TodoAppModule',
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   { 
     path: '**', 
