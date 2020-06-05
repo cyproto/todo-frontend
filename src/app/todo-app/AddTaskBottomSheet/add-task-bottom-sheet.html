@@ -1,0 +1,57 @@
+<div class="mat-bottom-sheet-main-div" fxLayout="row wrap">
+    <form [formGroup]="newTaskForm">
+        <span class="new-task-heading">Create new task</span>
+        <div fxLayout="row">
+            <div fxFlex="100">
+                <p style="margin-top: 30px;"><span class="add-task-text">Remind me to </span>
+                    <mat-form-field appearance="outline" style="width: 350px;">
+                        <mat-label>Title</mat-label>
+                        <input matInput placeholder="Complete todo-app" [formControl]="newTaskForm.controls['title']">
+                    </mat-form-field>
+                    <span class="add-task-text">by</span>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Due Date</mat-label>
+                        <input matInput [matDatepicker]="datepicker" [formControl]="newTaskForm.controls['estDate']"
+                            [disabled]="true">
+                        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                    <span class="add-task-text">with</span>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Priority</mat-label>
+                        <mat-select [formControl]="newTaskForm.controls['priority']">
+                            <mat-option value="High"><span class="high-priority-span"></span> High</mat-option>
+                            <mat-option value="Normal"><span class="normal-priority-span"></span> Normal</mat-option>
+                            <mat-option value="Low"><span class="low-priority-span"></span> Low</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span class="add-task-text">priority. </span>
+                    <span class="add-task-text">Set label as</span>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Label</mat-label>
+                        <mat-select [formControl]="newTaskForm.controls['label']">
+                            <mat-option *ngFor="let label of allLabels" [value]="label">
+                                {{ label }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span class="add-task-text">.</span>
+                </p>
+            </div>
+        </div>
+        <div fxLayout="row" style="margin-bottom: 30px">
+            <div fxFlex="50">
+                <mat-form-field style="margin-left: 10px; width: 100%;">
+                    <mat-label>Task Description</mat-label>
+                    <textarea [formControl]="newTaskForm.controls['description']" matInput
+                        placeholder="- Add getAllTasks, saveNewTask APIs." rows="4"></textarea>
+                </mat-form-field>
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end end">
+                <button mat-raised-button class="add-new-task-button" (click)="addTask()">
+                    <mat-icon style="margin-right: 5px;">add</mat-icon> Add task
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
