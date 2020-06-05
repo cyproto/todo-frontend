@@ -3,8 +3,9 @@
 }
 
 .welcome-span {
+    margin: 20px;
     font-size: 40px;
-    font-weight: 900;
+    font-weight: 700;
     margin-left: auto;
     text-align: right;
     overflow: hidden;
@@ -20,6 +21,7 @@
 }
 
 .date-span {
+    margin: 20px;
     font-size: medium;
     font-weight: 700;
 }
@@ -37,13 +39,13 @@
 
 .add-task-span {
     font-size: 25px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .add-button {
     width: calc( 40vw );
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
 }
 
@@ -53,7 +55,7 @@
 
 .add-icon {
     font-size: 30px;
-    font-weight: bolder;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     height: 100%;
@@ -70,7 +72,7 @@
     display: inline-block;
     width: calc( 80vw );
     margin: 10px;
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 1px 1px 1px 1px 3px #dadada;
@@ -169,10 +171,10 @@
 
 .tasks-not-found-span {
     padding: 15px;
-    border-radius: 20px;
+    border-radius: 15px;
     font-size: x-large;
     font-weight: 700;
-    background-color: #11999e;
+    background-color: #3F3D56;
     color: white;
 }
 
@@ -216,6 +218,7 @@
 }
 
 .logout-button {
+    margin: 20px;
     background-color: #f6416c;
     border-radius: 30px;
     color: white;
@@ -223,16 +226,13 @@
 }
 
 .todo-nav {
-    padding: 50px 30px 30px 30px;
     border-radius: 0 0 20px 20px;
     background-color: #3F3D56;
     color: white;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
-
 .quote-div {
-    margin-top: 10%;
+    margin: 20px;
     font-size: 20px;
     font-weight: 700;
     font-family: 'Source Code Pro', monospace;
@@ -240,6 +240,7 @@
 }
 
 .svg-div {
+    margin: 20px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -253,6 +254,8 @@
     width: 100%;
 }
 
-.overlay-div {
-
+.search-bar-mat-label, input {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
 }

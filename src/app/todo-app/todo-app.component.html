@@ -131,7 +131,7 @@
                             class="date-span">{{ currentDateTime | date: 'medium' }}</span>
                     </div>
                 </div>
-                <div fxLayout="row wrap" style="display: flex;">
+                <div fxLayout="row wrap" style="display: flex; margin-top: 10px;">
                     <div style="margin-left: auto;"><span class="welcome-span">Welcome, {{ currentUserName }}</span>
                     </div>
                 </div>
@@ -140,11 +140,11 @@
     <div class="todo-app-main-div">
         <div fxLayout="row wrap" class="search-div">
             <mat-form-field color="primary" class="search-bar" appearance="outline">
-                <mat-label style="font-size: larger;">Search</mat-label>
+                <mat-label class="search-bar-mat-label" style="font-size: larger;">Search</mat-label>
                 <input matInput #searchBar type="search" name="search" autocomplete="off"
                     (input)="onSearchChange($event.target.value)"
                     placeholder="Search by Title, Priority (Low, Normal, High ), Label or Status.">
-                <mat-icon matSuffix>search</mat-icon>
+                <mat-icon class="mat-icon" matSuffix>search</mat-icon>
             </mat-form-field>
         </div>
         <div fxLayout="row wrap" class="add-task-div">
@@ -315,11 +315,6 @@
                     <div fxFlex="40">
                         <span style="font-weight: 700;">Due </span>
                         {{ task.estimatedCompletionDate | date }}
-                    </div>
-                    <div fxFlex="15">
-                        <button mat-raised-button class="task-delete-button" (click)="deleteTask( task._id, $event )">
-                            <mat-icon style="margin-right: 5px;">delete</mat-icon> Delete
-                        </button>
                     </div>
                 </div>
             </div>
