@@ -6,6 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddTaskBottomSheet } from './AddTaskBottomSheet/add-task-bottom-sheet.component';
 import { EditTaskBottomSheet } from './EditTaskBottomSheet/edit-task-bottom-sheet.component';
 import { Router } from '@angular/router';
+import { ParticlesConfig } from './particles-config/particles-config';
+
+declare let particlesJS: any;
 
 @Component({
   selector: 'app-todo-app',
@@ -21,13 +24,14 @@ export class TodoAppComponent implements OnInit {
   currentUserName: string = '';
   isDataPulled: boolean = false;
   isMouseHovering: boolean = false;
+  currentDisplaylingQuote:string = '';
   currentUserFilteredTasks: any = [];
   apiRequestErrorMessage: string = '';
   currentUserCompletedTasks: any = [];
   currentUserUncompletedTasks: any = [];
-
+  quotes: any = [ 'Your limitation—it’s only your imagination.', 'Push yourself, because no one else is going to do it for you.', 'Sometimes later becomes never. Do it now.', 'Great things never come from comfort zones.', 'Dream it. Wish it. Do it.', 'Dream bigger. Do bigger.', 'Do something today that your future self will thank you for.', 'It’s going to be hard, but hard does not mean impossible.' ];
   constructor( private router: Router, private matSnackBar: MatSnackBar, private matBottomSheet: MatBottomSheet, private todoAppService: TodoAppService ) { 
-    setInterval( () => {
+    let y = setInterval( () => {
       this.currentDateTime = Date.now();
     });
     this.getAllLabels();
@@ -36,10 +40,13 @@ export class TodoAppComponent implements OnInit {
 
   ngOnInit() {
     this.currentUserTasks = [];
+    this.currentDisplaylingQuote = '';
     this.currentUserUncompletedTasks = [];
     this.currentUserCompletedTasks = [];
     this.getCurrentUserTasks();
     this.getCurrentUserName();
+    this.displayRandomQuote();
+    this.invokeParticles();
   }
 
   async getCurrentUserTasks() {
@@ -194,4 +201,11 @@ export class TodoAppComponent implements OnInit {
   } );
   }
 
+  displayRandomQuote() {
+    this.currentDisplaylingQuote = this.quotes[Math.floor( Math.random() * this.quotes.length )];
+  }
+ 
+  public invokeParticles(): void {
+    particlesJS('particles-js', ParticlesConfig, function() {});
+  }
 }
