@@ -1,0 +1,80 @@
+.mat-bottom-sheet-main-div {
+    padding-top: 5%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.edit-task-text {
+    font-size: 25px;
+    font-weight: 300;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.edit-new-task-button {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 30px;
+    background-color: #30e3ca;
+    color: white;
+    font-weight: 700;
+}
+
+.edit-task-heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #40514e;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+}
+
+.high-priority-span, .normal-priority-span, .low-priority-span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.high-priority-span {
+    background: #f6416c;
+}
+
+.normal-priority-span {
+    background: #ff9a76;
+}
+
+.low-priority-span {
+    background: #75daad;
+}
+
+.task-delete-button {
+    background-color: #f6416c;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+input {
+    font-size: larger;
+    font-weight: 700;
+}
+
+mat-option {
+    font-size: larger;
+    font-weight: 700;
+}
+
+mat-select {
+    font-size: larger;
+    font-weight: 700;
+}
