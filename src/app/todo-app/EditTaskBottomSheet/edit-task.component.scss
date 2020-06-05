@@ -64,17 +64,12 @@
     margin-right: 10px;
 }
 
-input {
+input, mat-option, mat-select, mat-label {
     font-size: larger;
     font-weight: 700;
+    font-family: 'Manrope', sans-serif;
 }
 
-mat-option {
-    font-size: larger;
-    font-weight: 700;
-}
-
-mat-select {
-    font-size: larger;
-    font-weight: 700;
+textarea {
+    font-family: 'Manrope', sans-serif;
 }
