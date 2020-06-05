@@ -29,6 +29,7 @@ export class TodoAppComponent implements OnInit {
   apiRequestErrorMessage: string = '';
   currentUserCompletedTasks: any = [];
   currentUserUncompletedTasks: any = [];
+  areParticlesInvoked: boolean = false;
   quotes: any = [ 'Your limitation—it’s only your imagination.', 'Push yourself, because no one else is going to do it for you.', 'Sometimes later becomes never. Do it now.', 'Great things never come from comfort zones.', 'Dream it. Wish it. Do it.', 'Dream bigger. Do bigger.', 'Do something today that your future self will thank you for.', 'It’s going to be hard, but hard does not mean impossible.' ];
   constructor( private router: Router, private matSnackBar: MatSnackBar, private matBottomSheet: MatBottomSheet, private todoAppService: TodoAppService ) { 
     let y = setInterval( () => {
@@ -39,6 +40,10 @@ export class TodoAppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if ( false == this.areParticlesInvoked ) {
+      this.invokeParticles();
+      this.areParticlesInvoked = true;
+    }
     this.currentUserTasks = [];
     this.currentDisplaylingQuote = '';
     this.currentUserUncompletedTasks = [];
@@ -46,7 +51,6 @@ export class TodoAppComponent implements OnInit {
     this.getCurrentUserTasks();
     this.getCurrentUserName();
     this.displayRandomQuote();
-    this.invokeParticles();
   }
 
   async getCurrentUserTasks() {
