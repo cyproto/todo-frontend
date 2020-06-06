@@ -59,7 +59,6 @@ export class TodoAppComponent implements OnInit {
         this.apiRequestErrorMessage = response['response'];
       } else {
         this.currentUserTasks = response['response'];
-        console.log( this.currentUserTasks );
         this.currentUserTasks.forEach( ( element ) => {
           if( 'Completed' == element['status'] ) {
             this.currentUserCompletedTasks.push( element );
@@ -68,13 +67,9 @@ export class TodoAppComponent implements OnInit {
           }
         } );
         this.isDataPulled = true;
-        console.log( this.currentUserTasks );
-        console.log( this.currentUserCompletedTasks );
       }
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
     } );
   }
@@ -85,12 +80,9 @@ export class TodoAppComponent implements OnInit {
         this.apiRequestErrorMessage = response['response'];
       } else {
         this.currentUserName = response['response'];
-        console.log( this.currentUserName );
       }
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
     } );
   }
@@ -124,9 +116,7 @@ export class TodoAppComponent implements OnInit {
       this.isDataPulled = false;
       this.ngOnInit();
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
     } );
   }
@@ -140,9 +130,7 @@ export class TodoAppComponent implements OnInit {
       this.isDataPulled = false;
       this.ngOnInit();
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
     } );
   }
@@ -153,12 +141,9 @@ export class TodoAppComponent implements OnInit {
             this.apiRequestErrorMessage = response['response'];
         } else {
             this.allLabels = response['response'];
-            console.log( this.allLabels );
         }
         }, error => {
-        console.log( error );
         this.apiRequestErrorMessage = error['error']['response'];
-        console.log( this.apiRequestErrorMessage );
         return;
     } );
   }
@@ -169,12 +154,9 @@ export class TodoAppComponent implements OnInit {
             this.apiRequestErrorMessage = response['response'];
         } else {
             this.allStatuses = response['response'];
-            console.log( this.allStatuses );
         }
         }, error => {
-        console.log( error );
         this.apiRequestErrorMessage = error['error']['response'];
-        console.log( this.apiRequestErrorMessage );
         return;
     } );
   }
@@ -198,9 +180,7 @@ export class TodoAppComponent implements OnInit {
         this.router.navigate( ['/login'] );
       }
       }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
   } );
   }

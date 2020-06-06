@@ -13,8 +13,6 @@ export class SignupService {
   }
 
   addUser( user ){
-    console.log( user );
-    console.log( environment['apiUrl'] + 'register' );
     return this.http.post( environment['apiUrl'] + 'register', user ).pipe();
   }
 }

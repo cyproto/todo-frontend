@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         return;
     }
     this.formData = this.loginForm.value;
-    console.log( this.formData );
     this.loginService.loginUser( this.formData ).subscribe( response => {
       if( false == response['success'] ) {
         this.apiRequestErrorMessage = response['response'];
@@ -49,9 +48,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate( ['/todo-app'] );
       }
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return;
     } );
   }

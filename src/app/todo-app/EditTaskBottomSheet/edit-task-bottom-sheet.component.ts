@@ -34,7 +34,6 @@ export class EditTaskBottomSheet implements OnInit {
     }
 
     updateTask() {
-        console.log( this.editTaskForm.value );
         if( null == this.editTaskForm.value.title || '' == this.editTaskForm.value.title ) {
         this.matSnackBar.open( 'Cannot update task without a \'Title\'.', 'Ok', {
             duration: 5000,
@@ -43,7 +42,6 @@ export class EditTaskBottomSheet implements OnInit {
         }
 
         let taskFormData = this.editTaskForm.value;
-        console.log( taskFormData );
         Object.keys( taskFormData ).forEach( element => {
         if( null == taskFormData[ element ] ) {
             delete taskFormData[ element ];
@@ -57,9 +55,7 @@ export class EditTaskBottomSheet implements OnInit {
         this.bottomSheetRef.dismiss();
         event.preventDefault();
         }, error => {
-        console.log( error );
         this.apiRequestErrorMessage = error['error']['response'];
-        console.log( this.apiRequestErrorMessage );
         return;
         } );
     }
@@ -73,9 +69,7 @@ export class EditTaskBottomSheet implements OnInit {
             this.bottomSheetRef.dismiss();
             event.preventDefault();
         }, error => {
-          console.log( error );
           this.apiRequestErrorMessage = error['error']['response'];
-          console.log( this.apiRequestErrorMessage );
           return;
         } );
       }

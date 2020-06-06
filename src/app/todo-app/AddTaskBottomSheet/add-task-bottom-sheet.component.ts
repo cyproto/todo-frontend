@@ -36,18 +36,14 @@ export class AddTaskBottomSheet implements OnInit {
             this.apiRequestErrorMessage = response['response'];
         } else {
             this.allLabels = response['response'];
-            console.log( this.allLabels );
         }
         }, error => {
-        console.log( error );
         this.apiRequestErrorMessage = error['error']['response'];
-        console.log( this.apiRequestErrorMessage );
         return;
         } );
     }
 
     addTask() {
-        console.log( this.newTaskForm.value );
         if( null == this.newTaskForm.value.title || '' == this.newTaskForm.value.title ) {
         this.matSnackBar.open( 'Cannot create task without a \'Title\'.', 'Ok', {
             duration: 5000,
@@ -69,9 +65,7 @@ export class AddTaskBottomSheet implements OnInit {
         this.bottomSheetRef.dismiss();
         event.preventDefault();
         }, error => {
-        console.log( error );
         this.apiRequestErrorMessage = error['error']['response'];
-        console.log( this.apiRequestErrorMessage );
         return;
         } );
     }

@@ -39,13 +39,10 @@ export class SignupComponent implements OnInit {
     }
     this.formData = this.signupForm.value;
     delete this.formData['confirmPassword'];
-    console.log( this.formData );
     this.signupService.addUser( this.formData ).subscribe( response => {
       this.router.navigate( ['/login'], { queryParams: { email: this.signupForm.value.email } } );
     }, error => {
-      console.log( error );
       this.apiRequestErrorMessage = error['error']['response'];
-      console.log( this.apiRequestErrorMessage );
       return ;
     } );
   }
