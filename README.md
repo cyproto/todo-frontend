@@ -1,27 +1,33 @@
-# TodoFrontend
+# TaDa✨ - The ToDo App
+This repository contains frontend made with angular material for [Hackerearth StackHack 1.0 challenge.](https://www.hackerearth.com/challenges/hackathon/stackhack-v1/ "Hackerearth StackHack 1.0 challenge.")
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
+## Live Demo
+[TaDa✨ - The ToDo App](https://todo-frontend-1e0b5.firebaseapp.com/login "TaDa✨ - The ToDo App")
 
-## Development server
+## Versions:
+- **angular/cli:** 8.3.12
+- **angular/core:** 8.2.11
+- **angular/compiler**: 8.2.11
+- **node:** v10.x
+- **npm:** 6.9.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Backend
+It utilizes apis written in node which can be found [here](https://github.com/yashgkar/todo-backend.git "here").
 
-## Code scaffolding
+## Installation and running the app
+```bash
+git clone https://github.com/cyproto/todo-frontend.git
+cd todo-frontend
+npm install
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Screenshots
+| <img src="https://i.imgur.com/GeqtMIr.png" width="450">  |   <img src="https://i.imgur.com/xCm8OKZ.png" width="450"> |
+| ------------ | ------------ |
+| <img src="https://i.imgur.com/L7zpVSO.png" width="450">  |  <img src="https://i.imgur.com/11Ra3ls.png" width="450"> |
+| <img src="https://i.imgur.com/avI8eKg.png" width="450">  | <img src="https://i.imgur.com/InnrNEn.png" width="450"> |
 
-## Build
+## Screen record
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[Vimeo.](https://vimeo.com/426473936 "Vimeo link.")
