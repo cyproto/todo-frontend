@@ -162,13 +162,13 @@
         </div>
         <div *ngIf="currentUserUncompletedTasks.length == 0 && isDataPulled == true">
             <div fxLayout="row" class="tasks-not-found-div">
-                <div fxFlex="30">
-                    <img style="height: 100%; width: 100%;" src="../../assets/images/no-tasks.png">
+                <div fxFlex="100">
+                    <span class="tasks-not-found-span">All wrapped up! No tasks found.</span>
                 </div>
             </div>
             <div fxLayout="row" class="tasks-not-found-div">
-                <div fxFlex="100">
-                    <span class="tasks-not-found-span">All wrapped up! No tasks found.</span>
+                <div fxFlex="30">
+                    <img style="height: 100%; width: 100%;" src="../../assets/images/no-tasks.png">
                 </div>
             </div>
         </div>
