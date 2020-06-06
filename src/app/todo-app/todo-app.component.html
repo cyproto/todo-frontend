@@ -211,6 +211,9 @@
                     <div fxFlex="40">
                         <span style="font-weight: 700;">Due </span>
                         {{ task.estimatedCompletionDate | date }}
+                        <span *ngIf="!task.estimatedCompletionDate">
+                            NA
+                        </span>
                     </div>
                     <div fxFlex="15">
                         <button mat-raised-button class="task-done-button"
@@ -264,6 +267,9 @@
                     <div fxFlex="40">
                         <span style="font-weight: 700;">Due </span>
                         {{ task.estimatedCompletionDate | date }}
+                        <span *ngIf="!task.estimatedCompletionDate">
+                            NA
+                        </span>
                     </div>
                     <div fxFlex="15">
                         <button mat-raised-button class="task-delete-button" (click)="deleteTask( task._id, $event )">
@@ -315,6 +321,9 @@
                     <div fxFlex="40">
                         <span style="font-weight: 700;">Due </span>
                         {{ task.estimatedCompletionDate | date }}
+                        <span *ngIf="!task.estimatedCompletionDate">
+                            NA
+                        </span>
                     </div>
                 </div>
             </div>
